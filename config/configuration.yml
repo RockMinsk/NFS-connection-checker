@@ -1,0 +1,47 @@
+os_types:
+  ubuntu:
+    packet_manager: 'apt-get'
+    dist_manager: 'dpkg'
+    root: 'sudo -s'
+    SSH:
+      packet: 'openssh-server'
+      process: 'ssh'
+    NFS:
+      packet: 
+        server: 'nfs-kernel-server'
+        client: 'nfs-common'
+      process: 'nfs-server'
+
+  centos:
+    packet_manager: 'yum'
+    dist_manager: 'rpc'
+    root: 'su'
+    SSH:
+      packet: 'openssh-server'
+      process: 'sshd'
+    NFS:
+      packet: 
+        server: 'nfs-utils nfs-utils-lib'
+        client: 'nfs-utils nfs-utils-lib'
+      process: 'nfs'
+
+hosts:
+  server:
+    servers_os_flavour: 'ubuntu'
+    ip: '192.168.56.101'
+    local_ip: '127.1.1.100'
+    SSH_port: '2222'
+    NFS_port: '2049'
+    credentials:
+      login: 'root'
+      password: 'ronnin1'
+
+  clients:
+    clients_os_flavour: 'centos'
+    ip: '192.168.56.3'
+    local_ip: '127.1.1.110'
+    SSH_port: '2222'
+    NFS_port: '2049'
+    credentials:
+      login: 'root'
+      password: 'ronnin1'
